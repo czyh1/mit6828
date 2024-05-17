@@ -50,7 +50,17 @@ SECTIONS
 	PROVIDE(edata = .);
 
 	.bss : {
+		PROVIDE(edata = .);
 		*(.bss)
+	}
+	*/
+	.bss :  {
+		PROVIDE(edata = .);
+		*(.dybss)
+				*(.bss .bss.*)
+				*(COMMON)
+		PROVIDE(end = .);
+		BYTE(0)
 	}
 
 	PROVIDE(end = .);
